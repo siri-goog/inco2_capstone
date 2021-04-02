@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- References to external CSS files -->
+<link href="/static/style/login.css" rel="stylesheet" />
+<link href="/static/style/alert.css" rel="stylesheet" />
+<!-- Font Awesome Icon Library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+  <!-- Alert box -->
+  <% if(alertMsg){ %>
+    <div class="<%= alertStatus %>">
+      <span class="closeBtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      <%= alertMsg %>
+    </div>
+  <%}%>
+
+  <!-- Login form -->
+  <div class="container">
+    <form method="POST" action="/login">
+      <div class="row">
+        <h2 style="text-align:center">My Grocery List</h2>
+        <div class="vl">
+          <span class="vl-innertext">or</span>
+        </div>
+
+        <div class="col">
+          <a href="#" class="fb btn">
+            <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+          </a>
+          <a href="#" class="twitter btn">
+            <i class="fa fa-twitter fa-fw"></i> Login with Twitter
+          </a>
+          <a href="#" class="google btn"><i class="fa fa-google fa-fw">
+            </i> Login with Google+
+          </a>
+        </div>
+
+        <div class="col">
+          <div class="hide-md-lg">
+            <p>Or sign in manually:</p>
+          </div>
+
+          <label id="emailMsg" class="errMsg"></label>
+          <input type="text" id="email" name="email" placeholder="Email" required>
+
+          <label id="passwordMsg" class="errMsg"></label>
+          <input type="password" id="password" name="password" placeholder="Password" required>
+          
+          <input type="submit" value="Login" id="loginBtn">
+        </div>
+        
+      </div>
+    </form>
+  </div>
+
+  <div class="bottom-container">
+    <div class="row">
+      <div class="col">
+        <a href="/signup" style="color:white" class="btn">Sign up</a>
+      </div>
+      <div class="col">
+        <a href="#" style="color:white" class="btn">Forgot password?</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- References to external JS files -->
+  <script src="/static/js/login.js"></script>
+
+</body>
+</html>
