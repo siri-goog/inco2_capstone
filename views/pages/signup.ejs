@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- References to external CSS files -->
+<link href="/static/style/signup.css" rel="stylesheet" />
+<link href="/static/style/alert.css" rel="stylesheet" />
+</head>
+<body>
+  
+  <!-- Alert box -->
+  <% if(alertMsg){ %>
+  <div class="<%= alertStatus %>">
+    <span class="closeBtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    <%= alertMsg %>
+  </div>
+  <%}%>
+
+  <!-- Signup form -->
+  <form method="POST" action="/signup">
+    <div class="container">
+      <h1>Sign up</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+
+      <label for="username"><b>Username</b></label>
+      <label id="usernameMsg" class="errMsg"></label>
+      <input type="text" placeholder="Enter username" name="username" id="username" required>
+
+      <label for="email"><b>Email</b></label>
+      <label id="emailMsg" class="errMsg"></label>
+      <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <label id="pswMsg" class="errMsg"></label>
+      <br>
+      <label class="remark">The password must be at least 8 characters with at least 1 lowercase, 1 uppercase, 1 number and 1 symbol</label>
+      <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+      <label for="psw-repeat"><b>Repeat Password</b></label>
+      <label id="pswRepeatMsg" class="errMsg"></label>
+      <input type="password" placeholder="Repeat Password" name="pswRepeat" id="pswRepeat" required>
+      <hr>
+
+      <button type="submit" class="signupBtn" id="signupBtn">Sign up</button>
+    </div>
+    
+    <div class="container signin">
+      <p>Already have an account? <a href="/login">Log in</a>.</p>
+    </div>
+  </form>
+
+  <!-- References to external JS files -->
+  <script src="/static/js/signup.js"></script>
+
+</body>
+</html>
