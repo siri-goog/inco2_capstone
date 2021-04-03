@@ -11,6 +11,8 @@ const app = express()
 app.set('view engine', 'ejs')
 //--Routes setup
 const loginRouter = require('./routes/login')
+const signupRouter = require('./routes/signup')
+const logoutRouter = require('./routes/logout')
 
 app.use(morgan('dev'))
 app.use('/static', express.static(path.join(__dirname, 'public')))
@@ -32,6 +34,8 @@ app.use(session({
 // Routes
 app.use('/', loginRouter)
 app.use('/login', loginRouter)
+app.use('/signup', signupRouter)
+app.use('/logout', logoutRouter)
 
 app.listen(PORT, () => {
     console.log(`server is listening on localhost:${PORT}!\n`)
