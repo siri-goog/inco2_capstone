@@ -16,6 +16,21 @@ const logoutRouter = require('./routes/logout')
 const resetPwdRouter = require('./routes/resetPassword')
 const newPwdRouter = require('./routes/newPassword')
 
+//Google API Authentication
+require('dotenv').config()
+const passport = require('passport');
+const cookieSession = require('cookie-session')
+require('./passport-setup');
+// For an actual app you should configure this with an experation time, better keys, proxy and secure
+app.use(cookieSession({
+    name: 'tuto-session',
+    keys: ['key1', 'key2']
+  }))
+// Initializes passport and passport sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.set('view engine','ejs')
 app.use(morgan('dev'))
 app.use('/static', express.static(path.join(__dirname, 'public')))
 //--Parse URL-encoded bodies (as sent by HTML forms)
@@ -40,6 +55,26 @@ app.use('/signup', signupRouter)
 app.use('/resetPassword', resetPwdRouter)
 app.use('/newPassword', newPwdRouter)
 app.use('/logout', logoutRouter)
+
+//Social Media Authentication
+// Auth middleware that checks if the user is logged in
+const isLoggedIn = (req, res, next) => {
+    if (req.user) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+app.get('/good', isLoggedIn, (req, res) =>{
+    res.render("pages/profile",{name:req.user.displayName,pic:req.user.photos[0].value,email:req.user.emails[0].value})
+})
+app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/good');
+  }
+);
 
 app.listen(PORT, () => {
     console.log(`server is listening on localhost:${PORT}!\n`)
