@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const validator = require('validator');
-//const db = require('../database')
+const db = require('../database')
 const crypto = require('crypto');
 
 var err = false

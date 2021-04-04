@@ -18,9 +18,10 @@ const newPwdRouter = require('./routes/newPassword')
 
 //Google API Authentication
 require('dotenv').config()
+require('./passport-setup');
 const passport = require('passport');
 const cookieSession = require('cookie-session')
-require('./passport-setup');
+const isLoggedIn = require("./routes/middleware/isLoggedIn")
 // For an actual app you should configure this with an experation time, better keys, proxy and secure
 app.use(cookieSession({
     name: 'tuto-session',
@@ -57,14 +58,6 @@ app.use('/newPassword', newPwdRouter)
 app.use('/logout', logoutRouter)
 
 //Social Media Authentication
-// Auth middleware that checks if the user is logged in
-const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-}
 app.get('/good', isLoggedIn, (req, res) =>{
     res.render("pages/profile",{name:req.user.displayName,pic:req.user.photos[0].value,email:req.user.emails[0].value})
 })
