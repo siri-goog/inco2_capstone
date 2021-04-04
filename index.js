@@ -13,6 +13,8 @@ app.set('view engine', 'ejs')
 const loginRouter = require('./routes/login')
 const signupRouter = require('./routes/signup')
 const logoutRouter = require('./routes/logout')
+const resetPwdRouter = require('./routes/resetPassword')
+const newPwdRouter = require('./routes/newPassword')
 
 app.use(morgan('dev'))
 app.use('/static', express.static(path.join(__dirname, 'public')))
@@ -28,13 +30,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     resave: true,
     saveUninitialized: true,
-    secret: "todo_secret"
+    secret: "It's a secret!"
 }));
 
 // Routes
 app.use('/', loginRouter)
 app.use('/login', loginRouter)
 app.use('/signup', signupRouter)
+app.use('/resetPassword', resetPwdRouter)
+app.use('/newPassword', newPwdRouter)
 app.use('/logout', logoutRouter)
 
 app.listen(PORT, () => {
