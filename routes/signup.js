@@ -3,6 +3,7 @@ const router = express.Router();
 const validator = require('validator');
 const db = require('../database')
 const crypto = require('crypto');
+var nodemailer = require('nodemailer');
 
 var err = false
 
@@ -60,6 +61,36 @@ router.post('/', (req, res) => {
                         
                     db.query('INSERT INTO users(username, email, password) VALUES ($1, $2, $3);', [username, email, pwdEncrypt])
                     .then (() => {
+                        var smtpTransport = nodemailer.createTransport({
+                            service: 'gmail',
+                            auth: {
+                                user: "sunwit.p@gmail.com",
+                                pass: "h01562314"
+                            }
+                        });
+                          
+                        var mailOptions = {
+                            to: email,
+                            from: 'confirmation@mygrocerylist.com',
+                            subject: 'Registration Confirmation - My Grocery List',
+                            text: 'Dear Customer!' +
+                                '\n\n'+ 
+                                'Thank you so much for signing up for My Groceery List. I hope you enjoy our application.\n\n' +
+                                'Please confirm your email address to help us ensure your account is always protected.\n\n' +
+                                '\n\n'+
+                                'For further technical questions and support, please contact us at info@mygrocerylist.com.\n\n' +
+                                '\n\n'+
+                                'Best Regards,\n'+
+                                'My Grocery List Team.\n'
+                        };
+                    
+                        smtpTransport.sendMail(mailOptions, function(err) {
+                            res.render('pages/resetPassword', {
+                                alertMsg: "An e-mail has been sent to " + email + " with further instructions",
+                                alertStatus: "alert success"
+                            })
+                        });
+                        
                         res.render('pages/login', {
                             alertMsg: "Sign up successful",
                             alertStatus: "alert success"
