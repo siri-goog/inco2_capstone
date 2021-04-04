@@ -45,7 +45,7 @@ router.post('/', (req, res) => {
                     //Correct username and password
                     req.session.user_id = users[0].user_id
                     req.session.username = users[0].username
-                    res.redirect("/todo")
+                    res.redirect("/home")
                 }
             })
             .catch((err) => {

@@ -12,9 +12,10 @@ app.set('view engine', 'ejs')
 //--Routes setup
 const loginRouter = require('./routes/login')
 const signupRouter = require('./routes/signup')
-const logoutRouter = require('./routes/logout')
 const resetPwdRouter = require('./routes/resetPassword')
 const newPwdRouter = require('./routes/newPassword')
+const homeRouter = require('./routes/home')
+const logoutRouter = require('./routes/logout')
 
 //Google API Authentication
 require('dotenv').config()
@@ -53,11 +54,13 @@ app.use(session({
 app.use('/', loginRouter)
 app.use('/login', loginRouter)
 app.use('/signup', signupRouter)
+app.use('/home', homeRouter)
 app.use('/resetPassword', resetPwdRouter)
 app.use('/newPassword', newPwdRouter)
 app.use('/logout', logoutRouter)
 
 //Social Media Authentication
+//--Google
 app.get('/good', isLoggedIn, (req, res) =>{
     res.render("pages/profile",{name:req.user.displayName,pic:req.user.photos[0].value,email:req.user.emails[0].value})
 })

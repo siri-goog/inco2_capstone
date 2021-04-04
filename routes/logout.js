@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../database')
 const session = require('express-session')
 
-//router.use(session({secret: "It's a secret!"}));
+router.use(session({secret: "It's a secret!"}));
 
 // Logout
 router.get('/', function(req, res){
