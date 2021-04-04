@@ -64,8 +64,8 @@ router.post('/', (req, res) => {
                         var smtpTransport = nodemailer.createTransport({
                             service: 'gmail',
                             auth: {
-                                user: "sunwit.p@gmail.com",
-                                pass: "h01562314"
+                                user: process.env.MAILSERVER_EMAIL,
+                                pass: process.env.MAILSERVER_PWD
                             }
                         });
                           
