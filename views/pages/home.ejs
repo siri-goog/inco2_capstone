@@ -1,12 +1,70 @@
 <%- include('header') -%>
 
-<div>
-  <form method="POST" action="/home">
-    <input type="text" id="search" name="search" placeholder="Search...">
-    <input type="submit" value="submit" class="submitBtn">
+<div id="divSearch">
+  <form method="POST" action="/home/search">
+    <input type="text" id="search" name="search" placeholder="What would you like to cook?...">
+    <input type="submit" value="Search" class="searchBtn">
   </form>
 </div>
 
+<% if(!data) { %>
+  <div class="recommended">
+    <div class="slideshow-container">
+  
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <iframe src="https://www.youtube.com/embed/X_qo3lnRS1k">
+        </iframe>
+        <video autoplay muted loop id="myVideo">
+          <source src="https://www.youtube.com/embed/X_qo3lnRS1k" type="video/mp4">
+        </video>
+        <div class="text">Gordon's Quick & Simple Dinner Recipes | Gordon Ramsay</div>
+      </div>
+      
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 3</div>
+        <iframe src="https://www.youtube.com/embed/Szv5Yx7xdyM">
+        </iframe>
+        <div class="text">How to Cook a Leg of Lamb | Jamie Oliver</div>
+      </div>
+      
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <iframe src="https://www.youtube.com/embed/nyaOv6lOJjs">
+        </iframe>
+        <div class="text">Ultimate Thai Beef Salad - Marion's Kitchen</div>
+      </div>
+      
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      
+    </div>
+    
+    <br>
+      
+    <div style="text-align:center">
+      <span class="dot" onclick="currentSlide(1)"></span> 
+      <span class="dot" onclick="currentSlide(2)"></span> 
+      <span class="dot" onclick="currentSlide(3)"></span> 
+    </div>
+  </div>
+<% } else { %>
+  <div class="row" id="searchResult">
+    <% for(var i=0; i<10; i++) { %>
+      <div class="column">
+        <div class="card">
+          <iframe src="https://www.youtube.com/embed/<%= data.items[i].id.videoId %>"></iframe>
+          <br>
+          <div class="videoTitle">
+            <a class="font small" id="<%= data.items[i].id.videoId %>" href="/home/<%= data.items[i].id.videoId %>"><%= data.items[i].snippet.title %></a>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+<% } %>
+
 <!-- References to external JS files -->
+<script src="/static/js/searchRecipe.js"></script>
 
 <%- include('footer') -%>

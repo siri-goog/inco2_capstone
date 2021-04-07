@@ -1,0 +1,27 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.font {
+  font-family: 'Kiwi Maru';
+}
+.font.center {
+  text-align: center
+}
+
+.font.header {
+  font-size: xx-large;
+}
+.font.large {
+  font-size: large;
+}
+.font.normal {
+  font-size: medium;
+}
+.font.small {
+  font-size: small;
+}
+
+.font.bold {
+  font-weight: bold;  
+}
+

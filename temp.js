@@ -19,7 +19,7 @@ google.youtube('v3').search.list({
 .catch((err) => console.log(err))*/
 
 //import { getSubtitles } from 'youtube-captions-scraper';
-const { getSubtitles } = require('youtube-captions-scraper')
+/*const { getSubtitles } = require('youtube-captions-scraper')
 
 getSubtitles({
   videoID: 'sv3TXMSv6Lw', // youtube video id
@@ -39,4 +39,4 @@ getSubtitles({
   lang: 'fr' // default: `en`
 }).then(function(captions) {
   console.log(captions);
-});
+});*/

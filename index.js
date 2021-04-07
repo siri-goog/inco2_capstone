@@ -15,6 +15,7 @@ const signupRouter = require('./routes/signup')
 const resetPwdRouter = require('./routes/resetPassword')
 const newPwdRouter = require('./routes/newPassword')
 const homeRouter = require('./routes/home')
+const recipeRouter = require('./routes/recipe')
 const logoutRouter = require('./routes/logout')
 
 //Google API Authentication
@@ -54,15 +55,20 @@ app.use(session({
 app.use('/', loginRouter)
 app.use('/login', loginRouter)
 app.use('/signup', signupRouter)
-app.use('/home', homeRouter)
 app.use('/resetPassword', resetPwdRouter)
 app.use('/newPassword', newPwdRouter)
+app.use('/home', homeRouter)
+app.use('/recipe', recipeRouter)
 app.use('/logout', logoutRouter)
 
 //Social Media Authentication
 //--Google
 app.get('/good', isLoggedIn, (req, res) =>{
-    res.render("pages/profile",{name:req.user.displayName,pic:req.user.photos[0].value,email:req.user.emails[0].value})
+  res.render("pages/profile",{
+    name: req.user.displayName,
+    pic: req.user.photos[0].value,
+    email: req.user.emails[0].value
+  })
 })
 app.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 app.get('/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),

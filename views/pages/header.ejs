@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Grocery List Application</title>
+    <title>My Grocery Shopping List Application</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- References to external CSS files -->
     <link href="/static/style/application.css" rel="stylesheet" />
+    <link href="/static/style/font.css" rel="stylesheet" />
     <link href="/static/style/container.css" rel="stylesheet" />
+    <link href="/static/style/slideshow.css" rel="stylesheet" />
+    <link href="/static/style/card.css" rel="stylesheet" />
     <!-- References to external JQuery files -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- References to Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Kiwi Maru' rel='stylesheet'>
 </head>
 <body>
 
 <!-- Header -->
 <div class="header">
-  <h1>My Grocery List</h1>
+  <h1 class="font header center">My Grocery Shopping List</h1>
 </div>
 
 <!-- Navigation Bar -->
-<div class="navbar">
+<div class="navbar font normal bold">
   <a id="username" href="#">Welcome ... <%= username %></a>
   <div style="width: 40%;"></div>
   <a href="/home">Search Recipe</a>
