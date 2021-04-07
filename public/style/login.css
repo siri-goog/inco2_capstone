@@ -1,10 +1,10 @@
-body {
-    margin: 10% 20% 0 20%;
-    background-color: #FBBBBC;
-  }
-  
   * {
     box-sizing: border-box;
+  }
+
+  body {
+    margin: 10% 20% 0 20%;
+    background-color: #FBBBBC;
   }
   
   /* style the container */
@@ -40,12 +40,10 @@ body {
     background-color: #3B5998;
     color: white;
   }
-  
   .twitter {
     background-color: #55ACEE;
     color: white;
   }
-  
   .google {
     background-color: #dd4b39;
     color: white;
@@ -57,7 +55,6 @@ body {
     color: white;
     cursor: pointer;
   }
-  
   input[type=submit]:hover {
     background-color: #45a049;
   }
@@ -86,7 +83,6 @@ body {
     border: 2px solid #ddd;
     height: 175px;
   }
-  
   /* text inside the vertical line */
   .vl-innertext {
     position: absolute;
@@ -97,7 +93,6 @@ body {
     border-radius: 50%;
     padding: 8px 10px;
   }
-  
   /* hide some text on medium and large screens */
   .hide-md-lg {
     display: none;

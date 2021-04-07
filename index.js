@@ -6,7 +6,7 @@ const path = require('path')
 const bodyParser = require('body-parser');
 //const cookieParser = require('cookie-parser');
 const session = require('express-session')
-const PORT = 3000
+const PORT = 4000
 const app = express()
 app.set('view engine', 'ejs')
 //--Routes setup

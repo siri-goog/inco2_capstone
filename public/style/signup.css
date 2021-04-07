@@ -48,11 +48,6 @@ body {
     opacity: 1;
   }
   
-  /* Link */
-  a {
-    color: dodgerblue;
-  }
-  
   /* Remark */
   .remark {
     color: green;
