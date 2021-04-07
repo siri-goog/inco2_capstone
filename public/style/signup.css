@@ -1,10 +1,15 @@
-/* Body */
-body {
+  /* Body */
+  * {
+    box-sizing: border-box;
+  }
+  body {
     background-color: #FBBBBC;
     margin: 1% 20% 1% 20%;
   }
-  * {
-    box-sizing: border-box;
+
+  /* Link */
+  a {
+    color: dodgerblue;
   }
   
   /* Container */
@@ -34,7 +39,7 @@ body {
   }
   
   /* Button */
-  .signupBtn {
+  .submitBtn {
     background-color: #4CAF50;
     color: white;
     padding: 16px 20px;
@@ -43,6 +48,11 @@ body {
     cursor: pointer;
     width: 100%;
     opacity: 0.9;
+    border-radius: 4px;
+    display: inline-block;
+    font-size: 17px;
+    line-height: 20px;
+    text-decoration: none;
   }
   .signupBtn:hover {
     opacity: 1;
